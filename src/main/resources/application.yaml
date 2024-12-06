@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: test weather
+  sql:
+    init:
+      mode: never
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:6545/weather}
+    password: ${SPRING_DATASOURCE_PASSWORD:weather}
+    username: ${SPRING_DATASOURCE_USERNAME:weather}
+    driverClassName: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: create
+    show-sql: false
+
+
+token:
+  signing:
+    key: 53A73E5F1C4E0A2D3B5F2D784E6A1B423D6F247D1F6E5C3A596D635A75327855

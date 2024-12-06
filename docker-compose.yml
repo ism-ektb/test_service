@@ -1,0 +1,26 @@
+version: '3.1'
+services:
+
+  weather_service-db:
+    image: postgres:13.7-alpine
+    container_name: weather_service-db
+    ports:
+      - "6545:5432"
+    volumes:
+      - /var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=weather
+      - POSTGRES_USER=weather
+      - POSTGRES_PASSWORD=weather
+
+  weather_service:
+    build: .
+    container_name: weather_service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - weather_service-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://weather_service-db:5432/weather
+      - SPRING_DATASOURCE_USERNAME=weather
+      - SPRING_DATASOURCE_PASSWORD=weather
