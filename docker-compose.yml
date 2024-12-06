@@ -14,7 +14,8 @@ services:
       - POSTGRES_PASSWORD=weather
 
   weather_service:
-    build: .
+    # build: .
+    image: ghcr.io/ism-ektb/test_service:main
     container_name: weather_service
     ports:
       - "8080:8080"
